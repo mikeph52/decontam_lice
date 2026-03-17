@@ -9,4 +9,4 @@
 #SBATCH --mail-user=mikeph526@outlook.com 
 #SBATCH --mail-type=ALL
 
-snakemake --cores 20
+snakemake -j 20
