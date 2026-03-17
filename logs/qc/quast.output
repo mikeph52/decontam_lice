@@ -25,3 +25,37 @@ Running Basic statistics processor...
   Contig files: 
     cal_hifi_reads
   Calculating N50 and L50...
+    cal_hifi_reads, N50 = 18844, L50 = 2641656, auN = 19625.5, Total length = 118955863920, GC % = 32.98, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /home1/mikeph/project_data/decontam_lice/results/quast/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /home1/mikeph/project_data/decontam_lice/results/quast/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /home1/mikeph/project_data/decontam_lice/results/quast/basic_stats/GC_content_plot.pdf
+  Drawing cal_hifi_reads GC content plot...
+    saved to /home1/mikeph/project_data/decontam_lice/results/quast/basic_stats/cal_hifi_reads_GC_content_plot.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2026-03-17 12:57:51
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating PDF with all tables and plots...
+  2 of 2: Creating Icarus viewers...
+Done
+
+2026-03-17 13:10:03
+RESULTS:
+  Text versions of total report are saved to /home1/mikeph/project_data/decontam_lice/results/quast/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home1/mikeph/project_data/decontam_lice/results/quast/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home1/mikeph/project_data/decontam_lice/results/quast/report.html
+  PDF version (tables and plots) is saved to /home1/mikeph/project_data/decontam_lice/results/quast/report.pdf
+  Icarus (contig browser) is saved to /home1/mikeph/project_data/decontam_lice/results/quast/icarus.html
+  Log is saved to /home1/mikeph/project_data/decontam_lice/results/quast/quast.log
+
+Finished: 2026-03-17 13:10:05
+Elapsed time: 1:51:04.633539
+NOTICEs: 1; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
