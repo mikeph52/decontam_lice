@@ -16,4 +16,4 @@ echo "SORTING STARTED"
 samtools sort -n -@ 20 -m 2G -o "$DIR"/Cal_mix_sorted.bam "$DATA"
 echo "SORTING ENDED, CONVERSION STARTED"
 samtools fastq -@ 10 "$DIR"/Cal_mix_sorted.bam | bgzip -@ 10 > "$DIR"/Cal_mix.fastq.gz
-echo "CONVERTION ENDED"
+echo "CONVERSION ENDED"
