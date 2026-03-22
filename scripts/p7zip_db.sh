@@ -15,7 +15,7 @@ DB=/home1/mikeph/data/kraken2_db
 
 for zipfile in "$DB"/*.zip; do
     echo "$(date): Extracting $zipfile..."
-    7za x "$zipfile" -o"$DB"/ && mv "$zipfile" "$DB"/archives/
+    7za x "$zipfile" -o"$DB"/ -y && mv "$zipfile" "$DB"/archives/
     echo "$(date): Done with $zipfile."
 done
 

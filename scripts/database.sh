@@ -5,17 +5,11 @@
 #SBATCH --ntasks-per-node=20
 #SBATCH --mem=45GB              
 #SBATCH --job-name="kraken2_db"
-#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/create_db.output
+#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/download_db.output
 #SBATCH --mail-user=mikeph526@outlook.com 
 #SBATCH --mail-type=ALL
 
 DB=/home1/mikeph/data/kraken2_db
-
-echo $SLURM_JOB_NAME
-echo $SLURM_JOB_PARTITION
-echo $SLURMD_NODENAME
-echo $SLURM_JOB_ID
-echo $SLURM_JOB_CPUS_PER_NODE
 
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ncbi
@@ -31,8 +25,3 @@ datasets download genome taxon 9606  --reference --filename "$DB"/human.zip
 datasets download genome taxon 6073  --reference --filename "$DB"/cnidaria.zip       
 
 echo "$(date):Datasets saved succesfully in /home1/mikeph/data/kraken2_db."
-echo "$(date):Extracting the zip files."
-
-gunzip "$DB"/*.zip
-
-echo "$(date):Files extracted succesfully"
