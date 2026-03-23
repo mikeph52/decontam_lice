@@ -14,15 +14,26 @@ DB=/home1/mikeph/data/kraken2_db
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ncbi
 
-echo "$(date):Downloading databases for NCBI to /home1/mikeph/data/kraken2_db."
+echo "$(date):Downloading dehrydated datasets from NCBI to /home1/mikeph/data/kraken2_db."
 
-#Downloaded databases are commented out.
-datasets download genome taxon 6656  --reference --filename "$DB"/arthropoda.zip      
-#datasets download genome taxon 1224  --reference --filename "$DB"/proteobacteria.zip  
-datasets download genome taxon 5878  --reference --filename "$DB"/ciliophora.zip      
-datasets download genome taxon 4890  --reference --filename "$DB"/ascomycota.zip      
-datasets download genome taxon 33090 --reference --filename "$DB"/streptophyta.zip    
-#datasets download genome taxon 9606  --reference --filename "$DB"/human.zip           
-datasets download genome taxon 6073  --reference --filename "$DB"/cnidaria.zip       
+#datasets are dehydrated
+datasets download genome taxon 6656  --reference --dehydrated --filename "$DB"/arthropoda.zip --no-progressbar      
+datasets download genome taxon 1224  --reference --dehydrated --filename "$DB"/proteobacteria.zip --no-progressbar 
+datasets download genome taxon 5878  --reference --dehydrated --filename "$DB"/ciliophora.zip  --no-progressbar    
+datasets download genome taxon 4890  --reference --dehydrated --filename "$DB"/ascomycota.zip  --no-progressbar    
+datasets download genome taxon 33090 --reference --dehydrated --filename "$DB"/streptophyta.zip --no-progressbar   
+datasets download genome taxon 9606  --reference --dehydrated --filename "$DB"/human.zip --no-progressbar          
+datasets download genome taxon 6073  --reference --dehydrated --filename "$DB"/cnidaria.zip  --no-progressbar     
 
-echo "$(date):Datasets saved succesfully in /home1/mikeph/data/kraken2_db."
+echo "$(date):Dehrydated datasets saved succesfully in /home1/mikeph/data/kraken2_db."
+echo "$(date):File extraction started:"
+
+unzip "$DB"/*.zip -d "$DB"/db
+
+echo "$(date):File extraction finished:"
+echo "$(date):Rehydration started:"
+
+datasets rehydrate --directory "$DB"/db/
+
+echo "$(date):Rehydration finished:"
+echo "Job finished at:$(date)"
