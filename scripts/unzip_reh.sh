@@ -28,7 +28,7 @@ unzip "$DB"/cnidaria/cnidaria.zip -d "$DEST"
 echo "$(date):File extraction finished:"
 echo "$(date):Rehydration started:"
 
-datasets rehydrate --directory "$DEST"
+datasets rehydrate --directory --no-progressbar  "$DEST"
 
 echo "$(date):Rehydration finished:"
 echo "Job finished at:$(date)"
