@@ -17,18 +17,18 @@ conda activate ncbi
 
 echo "$(date):File extraction started:"
 
-unzip "$DB"/arthropoda/arthropoda.zip -d "$DEST"
-unzip "$DB"/proteobacteria/proteobacteria.zip -d "$DEST"
-unzip "$DB"/ciliophora/ciliophora.zip -d "$DEST"
-unzip "$DB"/ascomycota/ascomycota.zip -d "$DEST"
-unzip "$DB"/streptophyta/streptophyta.zip -d "$DEST"
-unzip "$DB"/human/human.zip -d "$DEST"
-unzip "$DB"/cnidaria/cnidaria.zip -d "$DEST"
+unzip "$DB"/arthropoda/arthropoda.zip 
+unzip "$DB"/proteobacteria/proteobacteria.zip 
+unzip "$DB"/ciliophora/ciliophora.zip 
+unzip "$DB"/ascomycota/ascomycota.zip 
+unzip "$DB"/streptophyta/streptophyta.zip 
+unzip "$DB"/human/human.zip 
+unzip "$DB"/cnidaria/cnidaria.zip
 
 echo "$(date):File extraction finished:"
 echo "$(date):Rehydration started:"
 
-datasets rehydrate --directory --no-progressbar  "$DEST"
+datasets rehydrate --directory --no-progressbar  "$DB"
 
 echo "$(date):Rehydration finished:"
 echo "Job finished at:$(date)"
