@@ -17,26 +17,25 @@ conda activate ncbi
 
 echo "$(date):Downloading dehrydated datasets from NCBI to /home1/mikeph/data/kraken2_db."
 
-#datasets are dehydrated
-#datasets download genome taxon 6656  --reference --dehydrated --filename "$DB"/arthropoda.zip --no-progressbar      
-#datasets download genome taxon 1224  --reference --dehydrated --filename "$DB"/proteobacteria.zip --no-progressbar 
-#datasets download genome taxon 5878  --reference --dehydrated --filename "$DB"/ciliophora.zip  --no-progressbar    
-#datasets download genome taxon 4890  --reference --dehydrated --filename "$DB"/ascomycota.zip  --no-progressbar    
-#datasets download genome taxon 33090 --reference --dehydrated --filename "$DB"/streptophyta.zip --no-progressbar   
-#datasets download genome taxon 9606  --reference --dehydrated --filename "$DB"/human.zip --no-progressbar          
-#datasets download genome taxon 6073  --reference --dehydrated --filename "$DB"/cnidaria.zip  --no-progressbar 
+datasets download genome taxon 6656  --reference --dehydrated --filename "$DB"/arthropoda/arthropoda.zip --no-progressbar      
+datasets download genome taxon 1224  --reference --dehydrated --filename "$DB"/proteobacteria/proteobacteria.zip --no-progressbar 
+datasets download genome taxon 5878  --reference --dehydrated --filename "$DB"/ciliophora/ciliophora.zip  --no-progressbar    
+datasets download genome taxon 4890  --reference --dehydrated --filename "$DB"/ascomycota/ascomycota.zip  --no-progressbar    
+datasets download genome taxon 33090 --reference --dehydrated --filename "$DB"/streptophyta/streptophyta.zip --no-progressbar   
+datasets download genome taxon 9606  --reference --dehydrated --filename "$DB"/human/human.zip --no-progressbar          
+datasets download genome taxon 6073  --reference --dehydrated --filename "$DB"/cnidaria/cnidaria.zip  --no-progressbar 
 
-datasets download genome accession --inputfile "$TXT" --dehydrated --filename "$DB"/db.zip
+#datasets download genome accession --inputfile "$TXT" --dehydrated --filename "$DB"/db.zip
 
 echo "$(date):Dehrydated datasets saved succesfully in /home1/mikeph/data/kraken2_db."
-echo "$(date):File extraction started:"
+#echo "$(date):File extraction started:"
 
-unzip "$DB"/db.zip -d "$DB"/db
+#unzip "$DB"/db.zip -d "$DB"/db
 
-echo "$(date):File extraction finished:"
-echo "$(date):Rehydration started:"
+#echo "$(date):File extraction finished:"
+#echo "$(date):Rehydration started:"
 
-datasets rehydrate --directory "$DB"/db/
+#datasets rehydrate --directory "$DB"/db/
 
-echo "$(date):Rehydration finished:"
+#echo "$(date):Rehydration finished:"
 echo "Job finished at:$(date)"
