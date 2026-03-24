@@ -17,16 +17,15 @@ THREADS=20
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ncbi
 
-# Fix locale warnings
+# for locale warnings - i don't know why
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 echo "$(date): Adding sequences to library started"
 
-# Enable recursive globbing and find all fna files
 shopt -s globstar
 for fna in "$DEST"/**/*.fna; do
-    [ -f "$fna" ] || continue   # skip if no files matched
+    [ -f "$fna" ] || continue   
     echo "  Adding: $fna"
     kraken2-build --add-to-library "$fna" --db "$DB" --threads "$THREADS"
 done
