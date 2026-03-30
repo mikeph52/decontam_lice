@@ -11,7 +11,7 @@
 
 # NOTE! If you don't want STEP 3, run it on batch partition
 
-DB=/home1/mikeph/data/kraken2_db
+DB=/home1/mikeph/data/kraken2_db/
 DEST=/home1/mikeph/data/kraken2_db/db
 THREADS=20
 
@@ -26,6 +26,11 @@ source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ncbi # for ncbi toolset and kraken2
 
 # STEP 1: Download dehrydated datasets
+echo "$(date): Creating directories on /home1/mikeph/data/kraken2_db."
+
+mkdir -p "$DB"/arthropoda "$DB"/proteobacteria "$DB"/ciliophora "$DB"/ascomycota "$DB"/streptophyta "$DB"/human "$DB"/cnidaria "$DB"/copepoda "$DB"/chordata "$DB"/fungi
+
+echo "$(date): Creating directories completed."
 echo "$(date):Downloading dehrydated datasets from NCBI to /home1/mikeph/data/kraken2_db."
 
 datasets download genome taxon 6656  --reference --dehydrated --filename "$DB"/arthropoda/arthropoda.zip --no-progressbar      
