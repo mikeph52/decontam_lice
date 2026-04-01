@@ -4,8 +4,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=20
 #SBATCH --mem=200GB              
-#SBATCH --job-name="kraken2_2"
-#SBATCH --output=logs/kraken2/kraken2_2.output
+#SBATCH --job-name="kraken2"
+#SBATCH --output=logs/kraken2/kraken2.output
 #SBATCH --mail-user=mikeph526@outlook.com 
 #SBATCH --mail-type=ALL
 
@@ -13,6 +13,9 @@ DB=/home1/mikeph/data/kraken2_db
 FASTQ=/home1/mikeph/data/hifi_reads/Cal_mix.fastq.gz
 
 set -euo pipefail
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ncbi
