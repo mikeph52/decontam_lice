@@ -26,9 +26,25 @@ conda activate ncbi # for ncbi toolset and kraken2
 
 # STEP 1: Download dehrydated datasets
 
-# WE SKIP STEP 1
-echo "Building Kraken 2 Database v.3"
-echo "$(date): Skiping STEP 1:"
+echo "$(date): Creating directories on /home1/mikeph/data/kraken2_db."
+
+mkdir -p "$DB"/arthropoda "$DB"/proteobacteria "$DB"/ciliophora "$DB"/ascomycota "$DB"/streptophyta "$DB"/human "$DB"/cnidaria "$DB"/copepoda "$DB"/chordata "$DB"/fungi
+
+echo "$(date): Creating directories completed."
+echo "$(date):Downloading dehrydated datasets from NCBI to /home1/mikeph/data/kraken2_db."
+
+datasets download genome taxon 6656  --reference --dehydrated --filename "$DB"/arthropoda/arthropoda.zip --no-progressbar      
+datasets download genome taxon 1224  --reference --dehydrated --filename "$DB"/proteobacteria/proteobacteria.zip --no-progressbar 
+datasets download genome taxon 5878  --reference --dehydrated --filename "$DB"/ciliophora/ciliophora.zip  --no-progressbar    
+datasets download genome taxon 4890  --reference --dehydrated --filename "$DB"/ascomycota/ascomycota.zip  --no-progressbar    
+datasets download genome taxon 33090 --reference --dehydrated --filename "$DB"/streptophyta/streptophyta.zip --no-progressbar   
+datasets download genome taxon 9606  --reference --dehydrated --filename "$DB"/human/human.zip --no-progressbar          
+datasets download genome taxon 6073  --reference --dehydrated --filename "$DB"/cnidaria/cnidaria.zip  --no-progressbar
+datasets download genome taxon 6830  --reference --dehydrated --filename "$DB"/copepoda/copepoda.zip  --no-progressbar
+datasets download genome taxon 7711  --reference --dehydrated --filename "$DB"/chordata/chordata.zip  --no-progressbar
+datasets download genome taxon 4751  --reference --dehydrated --filename "$DB"/fungi/fungi.zip  --no-progressbar
+
+echo "$(date):Dehrydated datasets saved succesfully in /home1/mikeph/data/kraken2_db."
 
 # STEP 2: Unzip and rehydrate datasets
 echo "$(date): File extraction started"
