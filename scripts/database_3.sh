@@ -51,16 +51,15 @@ echo "$(date): File extraction started"
 
 for taxon in arthropoda proteobacteria ciliophora ascomycota streptophyta human cnidaria copepoda chordata fungi; do
     echo "  Unzipping ${taxon}..."
-    unzip -o "$DB/${taxon}/${taxon}.zip"
-done
+    unzip -o "$DB/${taxon}/${taxon}.zip" -d "$DB/${taxon}/"
 
-echo "$(date): File extraction finished"
-echo "$(date): Rehydration started"
+    echo "$(date): ${taxon} extraction finished"
+    echo "$(date): Rehydration for ${taxon} started"
 
-for taxon in arthropoda proteobacteria ciliophora ascomycota streptophyta human cnidaria copepoda chordata fungi; do
     datasets rehydrate --directory "$DB/${taxon}" --no-progressbar
 
-echo "$(date): Rehydration finished"
+    echo "$(date): Rehydration for ${taxon} finished"
+done
 
 # STEP 3: Built the databse, the rest are kraken2 stuff
 echo "$(date): Adding sequences to library started"
