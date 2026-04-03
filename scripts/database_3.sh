@@ -44,7 +44,7 @@ datasets download genome taxon 6830  --reference --dehydrated --filename "$DB"/c
 datasets download genome taxon 7711  --reference --dehydrated --filename "$DB"/chordata/chordata.zip  --no-progressbar
 datasets download genome taxon 4751  --reference --dehydrated --filename "$DB"/fungi/fungi.zip  --no-progressbar
 
-echo "$(date):Dehrydated datasets saved succesfully in /home1/mikeph/data/kraken2_db."
+echo "$(date):Dehydrated datasets saved succesfully in /home1/mikeph/data/kraken2_db."
 
 # STEP 2: Unzip and rehydrate datasets
 echo "$(date): File extraction started"
