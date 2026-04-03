@@ -5,5 +5,6 @@
 33090 streptophyta
 9606 human
 6073 cnidaria
-7711 chordata
 6830 copepoda
+7711 chordata
+4751 fungi

@@ -4,15 +4,14 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=20
 #SBATCH --mem=200GB              
-#SBATCH --job-name="k2_db"
-#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/k2_db.output
+#SBATCH --job-name="k2_db_3"
+#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/k2_db_3.output
 #SBATCH --mail-user=mikeph526@outlook.com 
 #SBATCH --mail-type=ALL
 
 # NOTE! If you don't want STEP 3, run it on batch partition
 
 DB=/home1/mikeph/data/kraken2_db/
-DEST=/home1/mikeph/data/kraken2_db/db
 THREADS=20
 
 # if you gonna fail, at least do it in the start
@@ -26,6 +25,7 @@ source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ncbi # for ncbi toolset and kraken2
 
 # STEP 1: Download dehrydated datasets
+
 echo "$(date): Creating directories on /home1/mikeph/data/kraken2_db."
 
 mkdir -p "$DB"/arthropoda "$DB"/proteobacteria "$DB"/ciliophora "$DB"/ascomycota "$DB"/streptophyta "$DB"/human "$DB"/cnidaria "$DB"/copepoda "$DB"/chordata "$DB"/fungi
@@ -44,28 +44,28 @@ datasets download genome taxon 6830  --reference --dehydrated --filename "$DB"/c
 datasets download genome taxon 7711  --reference --dehydrated --filename "$DB"/chordata/chordata.zip  --no-progressbar
 datasets download genome taxon 4751  --reference --dehydrated --filename "$DB"/fungi/fungi.zip  --no-progressbar
 
-echo "$(date):Dehrydated datasets saved succesfully in /home1/mikeph/data/kraken2_db."
-echo "$(date): File extraction started"
+echo "$(date):Dehydrated datasets saved succesfully in /home1/mikeph/data/kraken2_db."
 
 # STEP 2: Unzip and rehydrate datasets
+echo "$(date): File extraction started"
 
 for taxon in arthropoda proteobacteria ciliophora ascomycota streptophyta human cnidaria copepoda chordata fungi; do
     echo "  Unzipping ${taxon}..."
-    unzip -o "$DB/${taxon}/${taxon}.zip" -d "$DEST"
+    unzip -o "$DB/${taxon}/${taxon}.zip" -d "$DB/${taxon}/"
+
+    echo "$(date): ${taxon} extraction finished"
+    echo "$(date): Rehydration for ${taxon} started"
+
+    datasets rehydrate --directory "$DB/${taxon}" --no-progressbar
+
+    echo "$(date): Rehydration for ${taxon} finished"
 done
-
-echo "$(date): File extraction finished"
-echo "$(date): Rehydration started"
-
-datasets rehydrate --directory "$DEST" --no-progressbar
-
-echo "$(date): Rehydration finished"
 
 # STEP 3: Built the databse, the rest are kraken2 stuff
 echo "$(date): Adding sequences to library started"
 
-shopt -s globstar
-for fna in "$DEST"/**/*.fna; do
+shopt -s globstar # <--- enables global star
+for fna in "$DB"/**/*.fna; do # replace $DEST with $DB
     [ -f "$fna" ] || continue   
     echo "  Adding: $fna"
     kraken2-build --add-to-library "$fna" --db "$DB" --threads "$THREADS"
