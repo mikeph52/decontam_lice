@@ -1,5 +1,5 @@
 # Scripts for genome decontamination of _Caligus minimus_ explained
-_Last edited at: Tuesday, 21/4/2026, 10:10. Relevant to version:_
+_Last edited at: Tuesday, 21/4/2026, 10:10. Relevant to version:`0bddae8`_
 
 ## Scripts folder:
 ```bash
