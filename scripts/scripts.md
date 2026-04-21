@@ -1,5 +1,5 @@
 # Scripts for genome decontamination of _Caligus minimus_ explained
-_Last edited at: Friday, 3/4/2026, 16:46. Relevant to version:_
+_Last edited at: Tuesday, 21/4/2026, 10:10. Relevant to version:_
 
 ## Scripts folder:
 ```bash
@@ -9,6 +9,7 @@ _Last edited at: Friday, 3/4/2026, 16:46. Relevant to version:_
 |-- database.sh
 |-- database_single.sh
 |-- kraken2-db_std.sh
+|-- estimate_db_size.sh
 `-- scripts.md
 ```
 
@@ -17,6 +18,9 @@ _Last edited at: Friday, 3/4/2026, 16:46. Relevant to version:_
 
 - ### `bamtofastq.sh`
     BAM to FASTQ file conversion using Samtools v.1.23
+
+- ### `estimate_db_size.sh`
+    Calculates the estimate size of the database from existing size records from NCBI ,if are any. Pretty self-explanatory.
 
 - ### `database.sh`
     This script is downloading the dehydrated datasets, extracting them, rehydrating the data, and building the Kraken2 database from scratch. The total allocated RAM size of the script is dependent on the total database size, because kraken2 needs to load the downloaded datasets directly into the RAM all at once before the database construction starts.
