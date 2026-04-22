@@ -40,7 +40,7 @@ echo "$(date): Extraction of unclassified contig IDs started."
 
 awk '$1 == "U" {print $2}' "$POL_RESULTS"/dec.kraken2_4.output > "$RESULTS"/awk/unclassified_contigs.txt
 
-echo "$(date): Extraction of unclassified contig IDs finished. Saved at ${$RESULTS}/awk/unclassified_contigs.txt "
+echo "$(date): Extraction of unclassified contig IDs finished. Saved at ${RESULTS}/awk/unclassified_contigs.txt "
 echo "$(date): Removal of contaminants with seqtk started."
 
 seqtk subseq "$FASTA" "$RESULTS"/awk/unclassified_contigs.txt > "$RESULTS"/seqtk/polished_1_decontam.fasta
