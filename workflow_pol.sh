@@ -22,7 +22,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 source ~/miniconda3/etc/profile.d/conda.sh
-conda activate ncbi
+conda activate decontamination
 
 echo "Decontamination workflow of Caligus minimus."
 echo "$(date): Running kraken2. . ."
