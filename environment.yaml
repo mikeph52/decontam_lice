@@ -1,0 +1,10 @@
+name: decontamination
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+  - mikeph52
+dependencies:
+  - kraken2
+  - seqtk
+  - biogenie
