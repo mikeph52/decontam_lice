@@ -7,7 +7,7 @@
 #SBATCH --ntasks-per-node=20
 #SBATCH --mem=200GB              
 #SBATCH --job-name="kraken2"
-#SBATCH --output=logs/kraken2/kraken2_pol.output
+#SBATCH --output=logs/kraken2_pol.output
 #SBATCH --mail-user=mikeph526@outlook.com 
 #SBATCH --mail-type=ALL
 
