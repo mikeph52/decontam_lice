@@ -4,8 +4,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=20
 #SBATCH --mem=200GB              
-#SBATCH --job-name="k2_db_3"
-#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/k2_db_3.output
+#SBATCH --job-name="k2_db_4"
+#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/k2_db_4.output
 #SBATCH --mail-user=mikeph526@outlook.com 
 #SBATCH --mail-type=ALL
 
@@ -31,16 +31,6 @@ echo "$(date): Creating directories on /home1/mikeph/data/kraken2_db."
 mkdir -p "$DB"/pseudomonadota "$DB"/ciliophora "$DB"/ascomycota "$DB"/dicenthrachus_labrax "$DB"/posidonia_oceanica "$DB"/human
 echo "$(date): Creating directories completed."
 echo "$(date):Downloading dehrydated datasets from NCBI to /home1/mikeph/data/kraken2_db."
-
-# remove this
-Pseudomonadota	1224
-Ciliophora	5878
-Ascomycota	4890
-"Dicentrarchus labrax
-"	13489
-Homo sapiens	9606
-Posidonia oceanica	55489
-#
 
 datasets download genome taxon 1224 --reference --dehydrated --filename "$DB"/pseudomonadota/pseudomonadota.zip --no-progressbar
 datasets download genome taxon 5878 --reference --dehydrated --filename "$DB"/ciliophora/ciliophora.zip --no-progressbar
