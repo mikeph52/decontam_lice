@@ -1,5 +1,8 @@
 # Workflow for Decontamination of Genome Assembly of _Caligus minimus_
 
+> [!IMPORTANT]
+> This page is still under construction. Information may be incomplete or inaccurate.
+
 ## Introduction
 
 This workflow is intended for genome decontamination of _Caligus minimus_, a species of the _Caligidae_, a well-known copepod ectoparasite, from PacBio HiFi reads.
