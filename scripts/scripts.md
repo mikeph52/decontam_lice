@@ -1,12 +1,15 @@
 # Scripts for genome decontamination of _Caligus minimus_ explained
-_Last edited at: Tuesday, 21/4/2026, 10:10. Relevant to version:`0bddae8`_
+_Last edited at: Wednesday, 6/5/2026, 12:03. Relevant to version:`1468302`_
 
 ## Scripts folder:
+With the `*`, the active and relevant scripts are indicated.
+
 ```bash
 .
-|-- bamtofastq.sh
+|-- bamtofastq.sh.     *
 |-- database_old.sh
 |-- database.sh
+|-- database_2.0.sh    *
 |-- database_single.sh
 |-- kraken2-db_std.sh
 |-- estimate_db_size.sh
