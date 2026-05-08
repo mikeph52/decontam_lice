@@ -4,8 +4,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=20
 #SBATCH --mem=200GB              
-#SBATCH --job-name="k2_db_5"
-#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/k2_db_5.output
+#SBATCH --job-name="k2_db_6"
+#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/k2_db_6.output
 #SBATCH --mail-user=mikeph526@outlook.com 
 #SBATCH --mail-type=ALL
 
