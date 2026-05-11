@@ -2,8 +2,8 @@
 
 #SBATCH --partition=fat
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=20
-#SBATCH --mem=200GB              
+#SBATCH --ntasks-per-node=30
+#SBATCH --mem=480GB              
 #SBATCH --job-name="kraken2"
 #SBATCH --output=logs/kraken2/kraken2.output
 #SBATCH --mail-user=mikeph526@outlook.com 
@@ -22,8 +22,8 @@ conda activate ncbi
 
 kraken2 \
   --db "$DB" \
-  --threads 20 \
+  --threads 30 \
   --confidence 0.1\
-  --output results/kraken2/dec.kraken2_2.output \
-  --report results/kraken2/dec.kraken2_2.report \
+  --output results/kraken2/dec.kraken2.output \
+  --report results/kraken2/dec.kraken2.report \
   --gzip-compressed "$FASTQ"

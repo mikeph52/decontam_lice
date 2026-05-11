@@ -4,8 +4,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=20
 #SBATCH --mem=200GB              
-#SBATCH --job-name="k2_db_6"
-#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/k2_db_6.output
+#SBATCH --job-name="k2_db_7"
+#SBATCH --output=/home1/mikeph/project_data/decontam_lice/logs/kraken2/k2_db_7.output
 #SBATCH --mail-user=mikeph526@outlook.com 
 #SBATCH --mail-type=ALL
 
@@ -28,7 +28,7 @@ conda activate ncbi # for ncbi toolset and kraken2
 
 echo "$(date): Creating directories on /home1/mikeph/data/kraken2_db."
 
-mkdir -p "$DB"/pseudomonadota "$DB"/ciliophora "$DB"/ascomycota "$DB"/dicenthrachus_labrax "$DB"/posidonia_oceanica "$DB"/human
+mkdir -p "$DB"/pseudomonadota "$DB"/ciliophora "$DB"/ascomycota "$DB"/dicenthrachus_labrax "$DB"/posidonia_oceanica "$DB"/human "$DB"/caligidae
 echo "$(date): Creating directories completed."
 echo "$(date):Downloading dehrydated datasets from NCBI to /home1/mikeph/data/kraken2_db."
 
@@ -38,13 +38,14 @@ datasets download genome taxon 4890 --reference --dehydrated --filename "$DB"/as
 datasets download genome taxon 13489 --reference --dehydrated --filename "$DB"/dicenthrachus_labrax/dicenthrachus_labrax.zip --no-progressbar
 datasets download genome taxon 9606 --reference --dehydrated --filename "$DB"/human/human.zip --no-progressbar
 datasets download genome taxon 55489 --reference --dehydrated --filename "$DB"/posidonia_oceanica/posidonia_oceanica.zip --no-progressbar
+datasets download genome taxon 72034 --reference --dehydrated --filename "$DB"/caligidae/caligidae.zip --no-progressbar #for caligus
 
 echo "$(date):Dehydrated datasets saved succesfully in /home1/mikeph/data/kraken2_db."
 
 # STEP 2: Unzip and rehydrate datasets
 echo "$(date): File extraction started"
 
-for taxon in pseudomonadota ciliophora ascomycota dicenthrachus_labrax human posidonia_oceanica; do
+for taxon in pseudomonadota ciliophora ascomycota dicenthrachus_labrax human posidonia_oceanica caligidae; do
     echo "  Unzipping ${taxon}..."
     unzip -o "$DB/${taxon}/${taxon}.zip" -d "$DB/${taxon}/"
 
