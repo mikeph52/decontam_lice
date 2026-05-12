@@ -11,6 +11,7 @@
 
 DB=/home1/mikeph/data/kraken2_db
 FASTQ=/home1/mikeph/data/hifi_reads/Cal_mix.fastq.gz
+FASTA=home1/mikeph/project_data/caligus_assembly/results/hifiasm/caligus_minimus.p_ctg.fasta
 
 set -euo pipefail
 
@@ -20,10 +21,29 @@ export LANG=en_US.UTF-8
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ncbi
 
+echo "Running Kraken2 on raw reads..."
+
 kraken2 \
   --db "$DB" \
   --threads 30 \
   --confidence 0.1\
-  --output results/kraken2/dec.kraken2.output \
-  --report results/kraken2/dec.kraken2.report \
+  --output results/kraken2/raw/kraken2_raw.output \
+  --report results/kraken2/raw/kraken2_raw.report \
   --gzip-compressed "$FASTQ"
+
+echo "Kraken2 run on raw reads finished."
+echo "Report saved at 'results/kraken2/raw/kraken2_raw.report'."
+echo " "
+echo "Running Kraken2 on hifiasm assembly..."
+
+kraken2 \
+  --db "$DB" \
+  --threads 30 \
+  --confidence 0.1\
+  --output results/kraken2/hifiasm_assembly/kraken2_hifiasm.output \
+  --report results/kraken2/hifiasm_assembly/kraken2_hifiasmreport \
+  --unclassified-out "$FASTA"
+
+echo "Kraken2 run on hifiasm assembly finished."
+echo "Report saved at 'results/kraken2/hifiasm_assembly/kraken2_hifiasm.report'."
+echo "Job finished at $(date)."

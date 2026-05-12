@@ -1,5 +1,5 @@
 6656 arthropoda
-#1224 proteobacteria
+1224 proteobacteria
 5878 ciliophora
 4890 ascomycota#
 33090 streptophyta
