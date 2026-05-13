@@ -21,19 +21,19 @@ export LANG=en_US.UTF-8
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate ncbi
 
-echo "Running Kraken2 on raw reads..."
+#echo "Running Kraken2 on raw reads..."
 
-kraken2 \
-  --db "$DB" \
-  --threads 30 \
-  --confidence 0.1\
-  --output results/kraken2/raw/kraken2_raw.output \
-  --report results/kraken2/raw/kraken2_raw.report \
-  --gzip-compressed "$FASTQ"
+#kraken2 \
+#  --db "$DB" \
+#  --threads 30 \
+#  --confidence 0.1\
+#  --output results/kraken2/raw/kraken2_raw.output \
+#  --report results/kraken2/raw/kraken2_raw.report \
+#  --gzip-compressed "$FASTQ"
 
-echo "Kraken2 run on raw reads finished."
-echo "Report saved at 'results/kraken2/raw/kraken2_raw.report'."
-echo " "
+#echo "Kraken2 run on raw reads finished."
+#echo "Report saved at 'results/kraken2/raw/kraken2_raw.report'."
+#echo " "
 echo "Running Kraken2 on hifiasm assembly..."
 
 kraken2 \
@@ -42,7 +42,7 @@ kraken2 \
   --confidence 0.1\
   --output results/kraken2/hifiasm_assembly/kraken2_hifiasm.output \
   --report results/kraken2/hifiasm_assembly/kraken2_hifiasmreport \
-  --unclassified-out "$FASTA"
+  "$FASTA"
 
 echo "Kraken2 run on hifiasm assembly finished."
 echo "Report saved at 'results/kraken2/hifiasm_assembly/kraken2_hifiasm.report'."
