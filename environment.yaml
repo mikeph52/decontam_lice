@@ -8,3 +8,4 @@ dependencies:
   - kraken2
   - seqtk
   - biogenie
+  - ncbi-datasets-cli
